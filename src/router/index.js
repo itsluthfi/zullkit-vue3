@@ -29,6 +29,11 @@ const router = createRouter({
       name: 'pricing',
       component: () => import('../views/PricingView.vue'),
     },
+    {
+      path: '/success',
+      name: 'success',
+      component: () => import('../views/SuccessView.vue'),
+    },
   ],
 });
 
