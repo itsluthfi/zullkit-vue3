@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const props = defineProps({
   user: Object,
@@ -9,6 +12,12 @@ const show = ref(false);
 
 function toggleDropdown() {
   show.value = !show.value;
+}
+
+function logout() {
+  localStorage.clear('access_token');
+  localStorage.clear('token_type');
+  router.push('/login');
 }
 </script>
 
@@ -43,7 +52,7 @@ function toggleDropdown() {
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
         </li>
         <li>
-          <a href="#"
+          <a href="" @click="logout"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
             out</a>
         </li>
